@@ -16,37 +16,35 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Lowercase owner
-        id: owner
+      - name: Compute GHCR namespace (lowercase owner + repo)
+        id: ns
+        shell: bash
         run: |
-         echo "owner=$(echo '${{ github.repository_owner }}' | tr '[:upper:]' '[:lower:]')" >> $GITHUB_OUTPUT
-
-      - name: Set repo name
-        id: repo
-        run: |
-         echo "repo=$(echo "repo=$(basename '${{ github.repository }}')" >> $GITHUB_OUTPUT
+          owner_lc="$(echo '${{ github.repository_owner }}' | tr '[:upper:]' '[:lower:]')"
+          repo_name="${{ github.event.repository.name }}"
+          echo "image_ns=ghcr.io/${owner_lc}/${repo_name}" >> "$GITHUB_OUTPUT"
 
       - name: Login to GHCR
-        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
-
-      - name: Build book-service
+        shell: bash
         run: |
-          docker build -t ghcr.io/${{ github.repository_owner }}/mx7ueb_alkfej/book-service:latest ./services/book-service
-          docker push ghcr.io/${{ github.repository_owner }}/mx7ueb_alkfej/book-service:latest
+          echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u "${{ github.actor }}" --password-stdin
 
-      - name: Build user-service
+      - name: Build and push book-service
         run: |
-          docker build -t ghcr.io/${{ github.repository_owner }}/mx7ueb_alkfej/user-service:latest ./services/user-service
-          docker push ghcr.io/${{ github.repository_owner }}/mx7ueb_alkfej/user-service:latest
+          docker build -t ${{ steps.ns.outputs.image_ns }}/book-service:latest ./services/book-service
+          docker push ${{ steps.ns.outputs.image_ns }}/book-service:latest
 
-      - name: Build mcp-server
+      - name: Build and push user-service
         run: |
-          docker build -t ghcr.io/${{ github.repository_owner }}/mx7ueb_alkfej/mcp-server:latest ./services/mcp-server
-          docker push ghcr.io/${{ github.repository_owner }}/mx7ueb_alkfej/mcp-server:latest
+          docker build -t ${{ steps.ns.outputs.image_ns }}/user-service:latest ./services/user-service
+          docker push ${{ steps.ns.outputs.image_ns }}/user-service:latest
 
-      - name: Build frontend
+      - name: Build and push mcp-server
         run: |
-          docker build -t ghcr.io/${{ github.repository_owner }}/mx7ueb_alkfej/frontend:latest ./frontend
-          docker push ghcr.io/${{ github.repository_owner }}/mx7ueb_alkfej/frontend:latest
+          docker build -t ${{ steps.ns.outputs.image_ns }}/mcp-server:latest ./services/mcp-server
+          docker push ${{ steps.ns.outputs.image_ns }}/mcp-server:latest
 
-
+      - name: Build and push frontend
+        run: |
+          docker build -t ${{ steps.ns.outputs.image_ns }}/frontend:latest ./frontend
+          docker push ${{ steps.ns.outputs.image_ns }}/frontend:latest
