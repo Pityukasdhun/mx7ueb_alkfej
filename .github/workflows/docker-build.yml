@@ -13,28 +13,40 @@ jobs:
       packages: write
 
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
+
+      - name: Lowercase owner
+        id: owner
+        run: |
+         echo "owner=$(echo '${{ github.repository_owner }}' | tr '[:upper:]' '[:lower:]')" >> $GITHUB_OUTPUT
+
+      - name: Set repo name
+        id: repo
+        run: |
+         echo "repo=$(echo "repo=$(basename '${{ github.repository }}')" >> $GITHUB_OUTPUT
 
       - name: Login to GHCR
         run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
 
       - name: Build book-service
         run: |
-          docker build -t ghcr.io/${{ github.repository }}/book-service:latest ./services/book-service
-          docker push ghcr.io/${{ github.repository }}/book-service:latest
+          docker build -t ghcr.io/${{ github.repository_owner }}/mx7ueb_alkfej/book-service:latest ./services/book-service
+          docker push ghcr.io/${{ github.repository_owner }}/mx7ueb_alkfej/book-service:latest
 
       - name: Build user-service
         run: |
-          docker build -t ghcr.io/${{ github.repository }}/user-service:latest ./services/user-service
-          docker push ghcr.io/${{ github.repository }}/user-service:latest
+          docker build -t ghcr.io/${{ github.repository_owner }}/mx7ueb_alkfej/user-service:latest ./services/user-service
+          docker push ghcr.io/${{ github.repository_owner }}/mx7ueb_alkfej/user-service:latest
 
       - name: Build mcp-server
         run: |
-          docker build -t ghcr.io/${{ github.repository }}/mcp-server:latest ./services/mcp-server
-          docker push ghcr.io/${{ github.repository }}/mcp-server:latest
+          docker build -t ghcr.io/${{ github.repository_owner }}/mx7ueb_alkfej/mcp-server:latest ./services/mcp-server
+          docker push ghcr.io/${{ github.repository_owner }}/mx7ueb_alkfej/mcp-server:latest
 
       - name: Build frontend
         run: |
-          docker build -t ghcr.io/${{ github.repository }}/frontend:latest ./frontend
-          docker push ghcr.io/${{ github.repository }}/frontend:latest
+          docker build -t ghcr.io/${{ github.repository_owner }}/mx7ueb_alkfej/frontend:latest ./frontend
+          docker push ghcr.io/${{ github.repository_owner }}/mx7ueb_alkfej/frontend:latest
+
+
