@@ -27,8 +27,8 @@ spec:
     spec:
       containers:
         - name: mcp-server
-          image: mcp-server:latest
-          imagePullPolicy: Never
+          image: ghcr.io/pityukasdhun/mx7ueb_alkfej/mcp-server:latest
+          imagePullPolicy: Always
           ports:
             - containerPort: 8080
 ---

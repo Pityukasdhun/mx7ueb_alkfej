@@ -27,7 +27,7 @@ spec:
     spec:
       containers:
         - name: user-service
-          image: user-service:latest
-          imagePullPolicy: Never
+          image: ghcr.io/pityukasdhun/mx7ueb_alkfej/user-service:latest
+          imagePullPolicy: Always
           ports:
             - containerPort: 8080
