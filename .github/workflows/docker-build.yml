@@ -16,13 +16,13 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Compute GHCR namespace (lowercase owner + repo)
+      - name: Compute GHCR namespace
         id: ns
         shell: bash
         run: |
-          owner_lc="$(echo '${{ github.repository_owner }}' | tr '[:upper:]' '[:lower:]')"
-          repo_name="${{ github.event.repository.name }}"
-          echo "image_ns=ghcr.io/${owner_lc}/${repo_name}" >> "$GITHUB_OUTPUT"
+          OWNER_LC=$(echo "${{ github.repository_owner }}" | tr '[:upper:]' '[:lower:]')
+          REPO_NAME=$(echo "${{ github.event.repository.name }}" | tr '[:upper:]' '[:lower:]')
+          echo "image_ns=ghcr.io/${OWNER_LC}/${REPO_NAME}" >> $GITHUB_OUTPUT
 
       - name: Login to GHCR
         shell: bash
