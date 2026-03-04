@@ -1,0 +1,54 @@
+<h2>Books</h2>
+
+<section style="display:grid; gap:12px; max-width: 700px;">
+  <div style="display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
+    <input [(ngModel)]="q" placeholder="Search by title/author..." />
+    <button (click)="load()">Search</button>
+    <button (click)="q=''; load()">Clear</button>
+  </div>
+
+  <div style="border:1px solid #ddd; padding:12px; border-radius:8px;">
+    <h3>Add book</h3>
+    <div style="display:flex; gap:8px; flex-wrap:wrap;">
+      <input [(ngModel)]="title" placeholder="Title" />
+      <input [(ngModel)]="author" placeholder="Author" />
+      <input [(ngModel)]="year" type="number" placeholder="Year" />
+      <button (click)="create()">Add</button>
+    </div>
+  </div>
+
+  <div *ngIf="loading">Loading...</div>
+  <div *ngIf="error" style="color:#b00020;">{{ error }}</div>
+
+  <div style="border:1px solid #ddd; padding:12px; border-radius:8px;">
+    <h3>List</h3>
+
+    <div *ngIf="pagedBooks.length === 0 && !loading">No books found.</div>
+
+    <ul style="list-style:none; padding:0; display:grid; gap:8px;">
+      <li *ngFor="let b of pagedBooks" style="display:flex; justify-content:space-between; gap:12px; border-bottom:1px solid #eee; padding-bottom:8px;">
+        <div>
+          <div><b>{{ b.title }}</b> ({{ b.year }})</div>
+          <div>{{ b.author }}</div>
+          <div style="font-size:12px; color:#666;">id: {{ b.id }}</div>
+        </div>
+        <button (click)="remove(b.id)">Delete</button>
+      </li>
+    </ul>
+
+    <div style="display:flex; gap:10px; align-items:center; margin-top:12px;">
+      <button (click)="prev()" [disabled]="page <= 1">Prev</button>
+      <span>Page {{ page }} / {{ totalPages }}</span>
+      <button (click)="next()" [disabled]="page >= totalPages">Next</button>
+
+      <span style="margin-left:auto;">
+        Page size:
+        <select [(ngModel)]="pageSize" (ngModelChange)="page=1">
+          <option [ngValue]="5">5</option>
+          <option [ngValue]="10">10</option>
+          <option [ngValue]="20">20</option>
+        </select>
+      </span>
+    </div>
+  </div>
+</section>
