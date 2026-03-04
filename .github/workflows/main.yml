@@ -42,6 +42,15 @@ jobs:
           docker build -t ${{ steps.vars.outputs.IMAGE_NS }}/mcp-server:latest ./services/mcp-server
           docker push ${{ steps.vars.outputs.IMAGE_NS }}/mcp-server:latest
 
+      - name: Debug frontend files
+        run: |
+          echo "ROOT:"
+          ls -la
+          echo "FRONTEND:"
+          ls -la ./frontend || true
+          echo "DOCKERFILES:"
+          find . -maxdepth 3 -name "Dockerfile" -print -exec ls -la {} \; || true
+
       - name: Build & push frontend
         run: |
           docker build -f ./frontend/Dockerfile -t ${{ steps.vars.outputs.IMAGE_NS }}/frontend:latest ./frontend
