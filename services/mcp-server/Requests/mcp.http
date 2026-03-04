@@ -1,0 +1,18 @@
+@mcp = http://localhost:5056
+# indítás után írd át a portra amit kiír
+
+### list books (via mcp)
+GET {{mcp}}/api/mcp/books
+
+### search (via mcp)
+GET {{mcp}}/api/mcp/books?q=asimov
+
+### create (via mcp -> book-service)
+POST {{mcp}}/api/mcp/books
+Content-Type: application/json
+
+{
+  "title": "Dune",
+  "author": "Frank Herbert",
+  "year": 1965
+}

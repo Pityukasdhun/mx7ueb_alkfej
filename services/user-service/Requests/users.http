@@ -1,0 +1,14 @@
+@baseUrl = http://localhost:5232
+# ha nálad más port, írd át a dotnet run kimenete alapján
+
+### Get all
+GET {{baseUrl}}/api/users
+
+### Create
+POST {{baseUrl}}/api/users
+Content-Type: application/json
+
+{
+  "displayName": "István",
+  "email": "istvan@example.com"
+}

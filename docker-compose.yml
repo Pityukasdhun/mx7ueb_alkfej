@@ -1,0 +1,58 @@
+services:
+  mongo:
+    image: mongo:8
+    container_name: mx7ueb-mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
+  book-service:
+    build:
+      context: ./services/book-service
+    environment:
+      ASPNETCORE_ENVIRONMENT: "Development"
+      Mongo__ConnectionString: "mongodb://mongo:27017"
+      Mongo__Database: "alkfej"
+      Mongo__BooksCollection: "books"
+    depends_on:
+      - mongo
+    ports:
+      - "5054:8080"
+
+  user-service:
+    build:
+      context: ./services/user-service
+    environment:
+      ASPNETCORE_ENVIRONMENT: "Development"
+      Mongo__ConnectionString: "mongodb://mongo:27017"
+      Mongo__Database: "alkfej"
+      Mongo__UsersCollection: "users"
+    depends_on:
+      - mongo
+    ports:
+      - "5232:8080"
+
+  mcp-server:
+    build:
+      context: ./services/mcp-server
+    environment:
+      ASPNETCORE_ENVIRONMENT: "Development"
+      Downstream__BooksBaseUrl: "http://book-service:8080"
+    depends_on:
+      - book-service
+    ports:
+      - "5146:8080"
+
+  frontend:
+    build:
+      context: ./frontend
+    depends_on:
+      - mcp-server
+      - user-service
+      - book-service
+    ports:
+      - "4200:80"
+
+volumes:
+  mongo_data:

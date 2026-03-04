@@ -1,0 +1,34 @@
+@baseUrl = http://localhost:5054
+
+### Get all
+GET {{baseUrl}}/api/books
+
+### Search
+GET {{baseUrl}}/api/books?q=asimov
+
+### Create
+POST {{baseUrl}}/api/books
+Content-Type: application/json
+
+{
+  "title": "Foundation",
+  "author": "Isaac Asimov",
+  "year": 1951
+}
+
+### Get by id (másold be az id-t a Create válaszából)
+# @id = REPLACE_WITH_ID
+GET {{baseUrl}}/api/books/{{id}}
+
+### Update (másold be az id-t)
+PUT {{baseUrl}}/api/books/{{id}}
+Content-Type: application/json
+
+{
+  "title": "Foundation (Updated)",
+  "author": "Isaac Asimov",
+  "year": 1951
+}
+
+### Delete (másold be az id-t)
+DELETE {{baseUrl}}/api/books/{{id}}
