@@ -1,0 +1,48 @@
+name: Build & Push Images
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set image namespace
+        id: vars
+        run: |
+          OWNER_LC=$(echo "${{ github.repository_owner }}" | tr '[:upper:]' '[:lower:]')
+          echo "IMAGE_NS=ghcr.io/$OWNER_LC/mx7ueb_alkfej" >> $GITHUB_OUTPUT
+
+      - name: Login to GHCR
+        run: |
+          echo "${{ secrets.GHCR_TOKEN }}" | docker login ghcr.io -u "${{ github.repository_owner }}" --password-stdin
+
+      - name: Build & push book-service
+        run: |
+          docker build -t ${{ steps.vars.outputs.IMAGE_NS }}/book-service:latest ./services/book-service
+          docker push ${{ steps.vars.outputs.IMAGE_NS }}/book-service:latest
+
+      - name: Build & push user-service
+        run: |
+          docker build -t ${{ steps.vars.outputs.IMAGE_NS }}/user-service:latest ./services/user-service
+          docker push ${{ steps.vars.outputs.IMAGE_NS }}/user-service:latest
+
+      - name: Build & push mcp-server
+        run: |
+          docker build -t ${{ steps.vars.outputs.IMAGE_NS }}/mcp-server:latest ./services/mcp-server
+          docker push ${{ steps.vars.outputs.IMAGE_NS }}/mcp-server:latest
+
+      - name: Build & push frontend
+        run: |
+          docker build -f ./frontend/Dockerfile -t ${{ steps.vars.outputs.IMAGE_NS }}/frontend:latest ./frontend
+          docker push ${{ steps.vars.outputs.IMAGE_NS }}/frontend:latest
