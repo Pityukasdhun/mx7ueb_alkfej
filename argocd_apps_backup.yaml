@@ -1,0 +1,269 @@
+apiVersion: v1
+items:
+- apiVersion: argoproj.io/v1alpha1
+  kind: Application
+  metadata:
+    creationTimestamp: "2026-03-04T08:45:32Z"
+    generation: 60
+    name: mx7ueb-alkfej
+    namespace: argocd
+    resourceVersion: "11753"
+    uid: 167b2da6-d1bb-4460-8b26-6b1fc33838b5
+  spec:
+    destination:
+      namespace: mx7ueb
+      server: https://kubernetes.default.svc
+    project: default
+    source:
+      path: k8s
+      repoURL: https://github.com/Pityukasdhun/mx7ueb_alkfej.git
+      targetRevision: main
+    syncPolicy:
+      automated:
+        enabled: false
+        prune: true
+        selfHeal: true
+  status:
+    controllerNamespace: argocd
+    health:
+      lastTransitionTime: "2026-03-04T11:52:39Z"
+      status: Healthy
+    history:
+    - deployStartedAt: "2026-03-04T08:49:03Z"
+      deployedAt: "2026-03-04T08:49:03Z"
+      id: 0
+      initiatedBy:
+        username: admin
+      revision: 71d7657113fc5ca5406e09755fb615125d369270
+      source:
+        path: k8s
+        repoURL: https://github.com/Pityukasdhun/mx7ueb_alkfej.git
+        targetRevision: main
+    - deployStartedAt: "2026-03-04T11:52:37Z"
+      deployedAt: "2026-03-04T11:52:38Z"
+      id: 1
+      initiatedBy:
+        username: admin
+      revision: 72db4b59c936f7b6441cd6b8c782025dcef2ff71
+      source:
+        path: k8s
+        repoURL: https://github.com/Pityukasdhun/mx7ueb_alkfej.git
+        targetRevision: main
+    operationState:
+      finishedAt: "2026-03-04T11:52:39Z"
+      message: successfully synced (all tasks run)
+      operation:
+        initiatedBy:
+          username: admin
+        retry: {}
+        sync:
+          revision: 72db4b59c936f7b6441cd6b8c782025dcef2ff71
+          source:
+            path: k8s
+            repoURL: https://github.com/Pityukasdhun/mx7ueb_alkfej.git
+            targetRevision: main
+          syncStrategy:
+            hook: {}
+      phase: Succeeded
+      startedAt: "2026-03-04T11:52:37Z"
+      syncResult:
+        resources:
+        - group: ""
+          hookPhase: Running
+          kind: Namespace
+          message: namespace/mx7ueb configured
+          name: mx7ueb
+          namespace: mx7ueb
+          status: Synced
+          syncPhase: Sync
+          version: v1
+        - group: ""
+          hookPhase: Running
+          kind: Service
+          message: service/book-service configured
+          name: book-service
+          namespace: mx7ueb
+          status: Synced
+          syncPhase: Sync
+          version: v1
+        - group: ""
+          hookPhase: Running
+          kind: Service
+          message: service/mcp-server configured
+          name: mcp-server
+          namespace: mx7ueb
+          status: Synced
+          syncPhase: Sync
+          version: v1
+        - group: ""
+          hookPhase: Running
+          kind: Service
+          message: service/frontend configured
+          name: frontend
+          namespace: mx7ueb
+          status: Synced
+          syncPhase: Sync
+          version: v1
+        - group: ""
+          hookPhase: Running
+          kind: Service
+          message: service/user-service configured
+          name: user-service
+          namespace: mx7ueb
+          status: Synced
+          syncPhase: Sync
+          version: v1
+        - group: ""
+          hookPhase: Running
+          kind: Service
+          message: service/mongo configured
+          name: mongo
+          namespace: mx7ueb
+          status: Synced
+          syncPhase: Sync
+          version: v1
+        - group: apps
+          hookPhase: Running
+          images:
+          - ghcr.io/pityukasdhun/mx7ueb_alkfej/mcp-server:latest
+          kind: Deployment
+          message: deployment.apps/mcp-server configured
+          name: mcp-server
+          namespace: mx7ueb
+          status: Synced
+          syncPhase: Sync
+          version: v1
+        - group: apps
+          hookPhase: Running
+          images:
+          - ghcr.io/pityukasdhun/mx7ueb_alkfej/book-service:latest
+          kind: Deployment
+          message: deployment.apps/book-service configured
+          name: book-service
+          namespace: mx7ueb
+          status: Synced
+          syncPhase: Sync
+          version: v1
+        - group: apps
+          hookPhase: Running
+          images:
+          - frontend:latest
+          kind: Deployment
+          message: deployment.apps/frontend configured
+          name: frontend
+          namespace: mx7ueb
+          status: Synced
+          syncPhase: Sync
+          version: v1
+        - group: apps
+          hookPhase: Running
+          images:
+          - mongo:7
+          kind: Deployment
+          message: deployment.apps/mongo configured
+          name: mongo
+          namespace: mx7ueb
+          status: Synced
+          syncPhase: Sync
+          version: v1
+        - group: apps
+          hookPhase: Running
+          images:
+          - ghcr.io/pityukasdhun/mx7ueb_alkfej/user-service:latest
+          kind: Deployment
+          message: deployment.apps/user-service configured
+          name: user-service
+          namespace: mx7ueb
+          status: Synced
+          syncPhase: Sync
+          version: v1
+        revision: 72db4b59c936f7b6441cd6b8c782025dcef2ff71
+        source:
+          path: k8s
+          repoURL: https://github.com/Pityukasdhun/mx7ueb_alkfej.git
+          targetRevision: main
+    reconciledAt: "2026-03-04T12:14:36Z"
+    resourceHealthSource: appTree
+    resources:
+    - kind: Namespace
+      name: mx7ueb
+      status: Synced
+      version: v1
+    - kind: Service
+      name: book-service
+      namespace: mx7ueb
+      status: Synced
+      version: v1
+    - kind: Service
+      name: frontend
+      namespace: mx7ueb
+      status: Synced
+      version: v1
+    - kind: Service
+      name: mcp-server
+      namespace: mx7ueb
+      status: Synced
+      version: v1
+    - kind: Service
+      name: mongo
+      namespace: mx7ueb
+      status: Synced
+      version: v1
+    - kind: Service
+      name: user-service
+      namespace: mx7ueb
+      status: Synced
+      version: v1
+    - group: apps
+      kind: Deployment
+      name: book-service
+      namespace: mx7ueb
+      status: Synced
+      version: v1
+    - group: apps
+      kind: Deployment
+      name: frontend
+      namespace: mx7ueb
+      status: Synced
+      version: v1
+    - group: apps
+      kind: Deployment
+      name: mcp-server
+      namespace: mx7ueb
+      status: Synced
+      version: v1
+    - group: apps
+      kind: Deployment
+      name: mongo
+      namespace: mx7ueb
+      status: Synced
+      version: v1
+    - group: apps
+      kind: Deployment
+      name: user-service
+      namespace: mx7ueb
+      status: Synced
+      version: v1
+    sourceHydrator: {}
+    sourceType: Directory
+    summary:
+      images:
+      - frontend:latest
+      - ghcr.io/pityukasdhun/mx7ueb_alkfej/book-service:latest
+      - ghcr.io/pityukasdhun/mx7ueb_alkfej/mcp-server:latest
+      - ghcr.io/pityukasdhun/mx7ueb_alkfej/user-service:latest
+      - mongo:7
+    sync:
+      comparedTo:
+        destination:
+          namespace: mx7ueb
+          server: https://kubernetes.default.svc
+        source:
+          path: k8s
+          repoURL: https://github.com/Pityukasdhun/mx7ueb_alkfej.git
+          targetRevision: main
+      revision: 72db4b59c936f7b6441cd6b8c782025dcef2ff71
+      status: Synced
+kind: List
+metadata:
+  resourceVersion: ""

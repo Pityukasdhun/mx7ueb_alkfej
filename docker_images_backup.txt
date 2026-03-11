@@ -1,0 +1,15 @@
+IMAGE                                                                                                 ID             DISK USAGE   CONTENT SIZE   EXTRA
+book-service:latest                                                                                   a3d0215e0194        378MB         95.1MB        
+frontend:latest                                                                                       285c3fa11537       94.8MB         26.5MB        
+gcr.io/k8s-minikube/kicbase:v0.0.50                                                                   ffefe6978189       1.88GB          507MB        
+gcr.io/k8s-minikube/kicbase@sha256:eb4fec00e8ad70adf8e6436f195cc429825ffb85f95afcdb5d8d9deb576f3e93   eb4fec00e8ad       1.88GB          507MB   U    
+mcp-server:latest                                                                                     67fe2cfbafde        372MB         93.5MB        
+mongo:8                                                                                               474f5c3bf0e3       1.26GB          323MB   U    
+mongo:8.0                                                                                             dc9a16839d96       1.25GB          299MB        
+mx7ueb_alkfej-backend:latest                                                                          f59145d7e358        372MB         93.5MB        
+mx7ueb_alkfej-book-service:latest                                                                     3f853c91f9d7        378MB         95.1MB   U    
+mx7ueb_alkfej-frontend:latest                                                                         dbe01fc384f3       94.8MB         26.5MB   U    
+mx7ueb_alkfej-mcp-server:latest                                                                       6e6a9105e994        372MB         93.5MB   U    
+mx7ueb_alkfej-user-service:latest                                                                     ce1564ac6c0a        378MB         95.1MB   U    
+pityukasdhun/hello-devops:latest                                                                      486dc83b0115        264MB         67.4MB   U    
+user-service:latest                                                                                   5a5ac17c269b        378MB         95.1MB        

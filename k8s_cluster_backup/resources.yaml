@@ -1,0 +1,1587 @@
+apiVersion: v1
+items:
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    creationTimestamp: "2026-03-04T11:51:24Z"
+    generateName: book-service-5f6798fc4d-
+    generation: 1
+    labels:
+      app: book-service
+      pod-template-hash: 5f6798fc4d
+    name: book-service-5f6798fc4d-5zsvd
+    namespace: mx7ueb
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: ReplicaSet
+      name: book-service-5f6798fc4d
+      uid: 73b6afc1-3ae8-419f-b77b-78d22c40906f
+    resourceVersion: "11011"
+    uid: 6d0101ba-ac4e-4de5-a1af-66a71617e323
+  spec:
+    containers:
+    - image: ghcr.io/pityukasdhun/mx7ueb_alkfej/book-service:latest
+      imagePullPolicy: Always
+      name: book-service
+      ports:
+      - containerPort: 8080
+        protocol: TCP
+      resources: {}
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-c6h62
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    nodeName: minikube
+    preemptionPolicy: PreemptLowerPriority
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext: {}
+    serviceAccount: default
+    serviceAccountName: default
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+    volumes:
+    - name: kube-api-access-c6h62
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2026-03-04T11:51:44Z"
+      observedGeneration: 1
+      status: "True"
+      type: PodReadyToStartContainers
+    - lastProbeTime: null
+      lastTransitionTime: "2026-03-04T11:51:24Z"
+      observedGeneration: 1
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2026-03-04T11:51:44Z"
+      observedGeneration: 1
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2026-03-04T11:51:44Z"
+      observedGeneration: 1
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2026-03-04T11:51:24Z"
+      observedGeneration: 1
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: docker://7ebca32a86b946026d6ae2e195316163ad3f5f842cf1a4f02c67224893a5b5bd
+      image: ghcr.io/pityukasdhun/mx7ueb_alkfej/book-service:latest
+      imageID: docker-pullable://ghcr.io/pityukasdhun/mx7ueb_alkfej/book-service@sha256:baf7f67a1794e9b7ed78a698b9d0b99e27b6bd2e739b7516d57b1fa6af379c14
+      lastState: {}
+      name: book-service
+      ready: true
+      resources: {}
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2026-03-04T11:51:43Z"
+      volumeMounts:
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-c6h62
+        readOnly: true
+        recursiveReadOnly: Disabled
+    hostIP: 192.168.49.2
+    hostIPs:
+    - ip: 192.168.49.2
+    observedGeneration: 1
+    phase: Running
+    podIP: 10.244.0.31
+    podIPs:
+    - ip: 10.244.0.31
+    qosClass: BestEffort
+    startTime: "2026-03-04T11:51:24Z"
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    creationTimestamp: "2026-03-04T08:09:56Z"
+    generateName: frontend-c54fcdf66-
+    generation: 1
+    labels:
+      app: frontend
+      pod-template-hash: c54fcdf66
+    name: frontend-c54fcdf66-2sq9d
+    namespace: mx7ueb
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: ReplicaSet
+      name: frontend-c54fcdf66
+      uid: ef2fd1a5-fa5b-4cf1-ae89-dfa8038196ee
+    resourceVersion: "1737"
+    uid: 5d3d24fb-2dd6-4401-a500-9671da5e90a5
+  spec:
+    containers:
+    - image: frontend:latest
+      imagePullPolicy: Never
+      name: frontend
+      ports:
+      - containerPort: 80
+        protocol: TCP
+      resources: {}
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-fcq95
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    nodeName: minikube
+    preemptionPolicy: PreemptLowerPriority
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext: {}
+    serviceAccount: default
+    serviceAccountName: default
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+    volumes:
+    - name: kube-api-access-fcq95
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2026-03-04T08:09:57Z"
+      observedGeneration: 1
+      status: "True"
+      type: PodReadyToStartContainers
+    - lastProbeTime: null
+      lastTransitionTime: "2026-03-04T08:09:56Z"
+      observedGeneration: 1
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2026-03-04T08:09:57Z"
+      observedGeneration: 1
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2026-03-04T08:09:57Z"
+      observedGeneration: 1
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2026-03-04T08:09:56Z"
+      observedGeneration: 1
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: docker://b3ae4f92f95e5c5cca1085fe2feee116c1e2cc2b73017e711bf773bc4dc2e5cf
+      image: frontend:latest
+      imageID: docker://sha256:b87ddf8a69dca69fa776f807e752ecddbc5318dd57297da33b3ce708c035e6af
+      lastState: {}
+      name: frontend
+      ready: true
+      resources: {}
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2026-03-04T08:09:56Z"
+      volumeMounts:
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-fcq95
+        readOnly: true
+        recursiveReadOnly: Disabled
+    hostIP: 192.168.49.2
+    hostIPs:
+    - ip: 192.168.49.2
+    observedGeneration: 1
+    phase: Running
+    podIP: 10.244.0.7
+    podIPs:
+    - ip: 10.244.0.7
+    qosClass: BestEffort
+    startTime: "2026-03-04T08:09:56Z"
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    creationTimestamp: "2026-03-04T11:51:24Z"
+    generateName: mcp-server-5fdd899c99-
+    generation: 1
+    labels:
+      app: mcp-server
+      pod-template-hash: 5fdd899c99
+    name: mcp-server-5fdd899c99-vxp4b
+    namespace: mx7ueb
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: ReplicaSet
+      name: mcp-server-5fdd899c99
+      uid: ba8c8d90-f29b-483f-8e4d-60467568d951
+    resourceVersion: "10957"
+    uid: a10ac181-e02e-43c3-a20d-4ae459f81608
+  spec:
+    containers:
+    - image: ghcr.io/pityukasdhun/mx7ueb_alkfej/mcp-server:latest
+      imagePullPolicy: Always
+      name: mcp-server
+      ports:
+      - containerPort: 8080
+        protocol: TCP
+      resources: {}
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-l9bj9
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    nodeName: minikube
+    preemptionPolicy: PreemptLowerPriority
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext: {}
+    serviceAccount: default
+    serviceAccountName: default
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+    volumes:
+    - name: kube-api-access-l9bj9
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2026-03-04T11:51:36Z"
+      observedGeneration: 1
+      status: "True"
+      type: PodReadyToStartContainers
+    - lastProbeTime: null
+      lastTransitionTime: "2026-03-04T11:51:24Z"
+      observedGeneration: 1
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2026-03-04T11:51:36Z"
+      observedGeneration: 1
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2026-03-04T11:51:36Z"
+      observedGeneration: 1
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2026-03-04T11:51:24Z"
+      observedGeneration: 1
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: docker://c64ae3e5a40781ff998403a0981079aaf12eaf42bd5d1846f9aa8a4aed794784
+      image: ghcr.io/pityukasdhun/mx7ueb_alkfej/mcp-server:latest
+      imageID: docker-pullable://ghcr.io/pityukasdhun/mx7ueb_alkfej/mcp-server@sha256:ed7cebfc88489486306f62b6433205defe73f5d495c4a2f0a31ec9fb00cf553f
+      lastState: {}
+      name: mcp-server
+      ready: true
+      resources: {}
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2026-03-04T11:51:36Z"
+      volumeMounts:
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-l9bj9
+        readOnly: true
+        recursiveReadOnly: Disabled
+    hostIP: 192.168.49.2
+    hostIPs:
+    - ip: 192.168.49.2
+    observedGeneration: 1
+    phase: Running
+    podIP: 10.244.0.30
+    podIPs:
+    - ip: 10.244.0.30
+    qosClass: BestEffort
+    startTime: "2026-03-04T11:51:24Z"
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    creationTimestamp: "2026-03-04T08:09:55Z"
+    generateName: mongo-5cbf997c58-
+    generation: 1
+    labels:
+      app: mongo
+      pod-template-hash: 5cbf997c58
+    name: mongo-5cbf997c58-69dbk
+    namespace: mx7ueb
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: ReplicaSet
+      name: mongo-5cbf997c58
+      uid: 6557b880-bb14-4948-a4ec-0a1ad13975b6
+    resourceVersion: "1775"
+    uid: 5e11ae33-05b8-442c-a13d-4754a1e9b94d
+  spec:
+    containers:
+    - image: mongo:7
+      imagePullPolicy: IfNotPresent
+      name: mongo
+      ports:
+      - containerPort: 27017
+        protocol: TCP
+      resources: {}
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-667qb
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    nodeName: minikube
+    preemptionPolicy: PreemptLowerPriority
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext: {}
+    serviceAccount: default
+    serviceAccountName: default
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+    volumes:
+    - name: kube-api-access-667qb
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2026-03-04T08:10:14Z"
+      observedGeneration: 1
+      status: "True"
+      type: PodReadyToStartContainers
+    - lastProbeTime: null
+      lastTransitionTime: "2026-03-04T08:09:55Z"
+      observedGeneration: 1
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2026-03-04T08:10:14Z"
+      observedGeneration: 1
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2026-03-04T08:10:14Z"
+      observedGeneration: 1
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2026-03-04T08:09:55Z"
+      observedGeneration: 1
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: docker://a484bde7f39a057d8160c20c0fc24911d93362d7619273599334fb90e0a96b64
+      image: mongo:7
+      imageID: docker-pullable://mongo@sha256:81ed620b45935fb49704010b75d3fa73df547f71323cfdba49323a64412253a4
+      lastState: {}
+      name: mongo
+      ready: true
+      resources: {}
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2026-03-04T08:10:14Z"
+      volumeMounts:
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-667qb
+        readOnly: true
+        recursiveReadOnly: Disabled
+    hostIP: 192.168.49.2
+    hostIPs:
+    - ip: 192.168.49.2
+    observedGeneration: 1
+    phase: Running
+    podIP: 10.244.0.3
+    podIPs:
+    - ip: 10.244.0.3
+    qosClass: BestEffort
+    startTime: "2026-03-04T08:09:55Z"
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    creationTimestamp: "2026-03-04T11:51:24Z"
+    generateName: user-service-64b4d7f7bb-
+    generation: 1
+    labels:
+      app: user-service
+      pod-template-hash: 64b4d7f7bb
+    name: user-service-64b4d7f7bb-vmks2
+    namespace: mx7ueb
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: ReplicaSet
+      name: user-service-64b4d7f7bb
+      uid: cc781f4f-9e2e-4c24-a71b-e46164124fd6
+    resourceVersion: "10984"
+    uid: 6fe522ee-27a8-446f-814d-b965ff8bee32
+  spec:
+    containers:
+    - image: ghcr.io/pityukasdhun/mx7ueb_alkfej/user-service:latest
+      imagePullPolicy: Always
+      name: user-service
+      ports:
+      - containerPort: 8080
+        protocol: TCP
+      resources: {}
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-vvcvj
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    nodeName: minikube
+    preemptionPolicy: PreemptLowerPriority
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext: {}
+    serviceAccount: default
+    serviceAccountName: default
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+    volumes:
+    - name: kube-api-access-vvcvj
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2026-03-04T11:51:42Z"
+      observedGeneration: 1
+      status: "True"
+      type: PodReadyToStartContainers
+    - lastProbeTime: null
+      lastTransitionTime: "2026-03-04T11:51:24Z"
+      observedGeneration: 1
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2026-03-04T11:51:42Z"
+      observedGeneration: 1
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2026-03-04T11:51:42Z"
+      observedGeneration: 1
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2026-03-04T11:51:24Z"
+      observedGeneration: 1
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: docker://4208d3368ee9b91878ad291f23b53355c163f94128f10a8f9a54019e97bf04cc
+      image: ghcr.io/pityukasdhun/mx7ueb_alkfej/user-service:latest
+      imageID: docker-pullable://ghcr.io/pityukasdhun/mx7ueb_alkfej/user-service@sha256:ca45505c536391882593382ee42222bae12d83af3f8bdf579e7a0d1d3bb38ae3
+      lastState: {}
+      name: user-service
+      ready: true
+      resources: {}
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2026-03-04T11:51:41Z"
+      volumeMounts:
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-vvcvj
+        readOnly: true
+        recursiveReadOnly: Disabled
+    hostIP: 192.168.49.2
+    hostIPs:
+    - ip: 192.168.49.2
+    observedGeneration: 1
+    phase: Running
+    podIP: 10.244.0.29
+    podIPs:
+    - ip: 10.244.0.29
+    qosClass: BestEffort
+    startTime: "2026-03-04T11:51:24Z"
+- apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      argocd.argoproj.io/tracking-id: mx7ueb-alkfej:/Service:mx7ueb/book-service
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","kind":"Service","metadata":{"annotations":{"argocd.argoproj.io/tracking-id":"mx7ueb-alkfej:/Service:mx7ueb/book-service"},"name":"book-service","namespace":"mx7ueb"},"spec":{"ports":[{"port":8080,"targetPort":8080}],"selector":{"app":"book-service"}}}
+    creationTimestamp: "2026-03-04T08:09:55Z"
+    name: book-service
+    namespace: mx7ueb
+    resourceVersion: "11082"
+    uid: 7b1afa64-6bc7-4682-af69-c8e9d9429a63
+  spec:
+    clusterIP: 10.109.136.203
+    clusterIPs:
+    - 10.109.136.203
+    internalTrafficPolicy: Cluster
+    ipFamilies:
+    - IPv4
+    ipFamilyPolicy: SingleStack
+    ports:
+    - port: 8080
+      protocol: TCP
+      targetPort: 8080
+    selector:
+      app: book-service
+    sessionAffinity: None
+    type: ClusterIP
+  status:
+    loadBalancer: {}
+- apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      argocd.argoproj.io/tracking-id: mx7ueb-alkfej:/Service:mx7ueb/frontend
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","kind":"Service","metadata":{"annotations":{"argocd.argoproj.io/tracking-id":"mx7ueb-alkfej:/Service:mx7ueb/frontend"},"name":"frontend","namespace":"mx7ueb"},"spec":{"ports":[{"nodePort":30200,"port":80,"targetPort":80}],"selector":{"app":"frontend"},"type":"NodePort"}}
+    creationTimestamp: "2026-03-04T08:09:56Z"
+    name: frontend
+    namespace: mx7ueb
+    resourceVersion: "11084"
+    uid: 8bb7084c-5601-4e3f-bb33-467bd59b5d9d
+  spec:
+    clusterIP: 10.99.12.220
+    clusterIPs:
+    - 10.99.12.220
+    externalTrafficPolicy: Cluster
+    internalTrafficPolicy: Cluster
+    ipFamilies:
+    - IPv4
+    ipFamilyPolicy: SingleStack
+    ports:
+    - nodePort: 30200
+      port: 80
+      protocol: TCP
+      targetPort: 80
+    selector:
+      app: frontend
+    sessionAffinity: None
+    type: NodePort
+  status:
+    loadBalancer: {}
+- apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      argocd.argoproj.io/tracking-id: mx7ueb-alkfej:/Service:mx7ueb/mcp-server
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","kind":"Service","metadata":{"annotations":{"argocd.argoproj.io/tracking-id":"mx7ueb-alkfej:/Service:mx7ueb/mcp-server"},"name":"mcp-server","namespace":"mx7ueb"},"spec":{"ports":[{"port":8080,"targetPort":8080}],"selector":{"app":"mcp-server"}}}
+    creationTimestamp: "2026-03-04T08:09:55Z"
+    name: mcp-server
+    namespace: mx7ueb
+    resourceVersion: "11083"
+    uid: 27ab80a2-0be7-4e2f-a083-d127e772f89a
+  spec:
+    clusterIP: 10.100.134.255
+    clusterIPs:
+    - 10.100.134.255
+    internalTrafficPolicy: Cluster
+    ipFamilies:
+    - IPv4
+    ipFamilyPolicy: SingleStack
+    ports:
+    - port: 8080
+      protocol: TCP
+      targetPort: 8080
+    selector:
+      app: mcp-server
+    sessionAffinity: None
+    type: ClusterIP
+  status:
+    loadBalancer: {}
+- apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      argocd.argoproj.io/tracking-id: mx7ueb-alkfej:/Service:mx7ueb/mongo
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","kind":"Service","metadata":{"annotations":{"argocd.argoproj.io/tracking-id":"mx7ueb-alkfej:/Service:mx7ueb/mongo"},"name":"mongo","namespace":"mx7ueb"},"spec":{"ports":[{"port":27017,"targetPort":27017}],"selector":{"app":"mongo"}}}
+    creationTimestamp: "2026-03-04T08:09:55Z"
+    name: mongo
+    namespace: mx7ueb
+    resourceVersion: "11086"
+    uid: 851d9841-2954-4f0c-94ae-51dd23fe0854
+  spec:
+    clusterIP: 10.111.214.218
+    clusterIPs:
+    - 10.111.214.218
+    internalTrafficPolicy: Cluster
+    ipFamilies:
+    - IPv4
+    ipFamilyPolicy: SingleStack
+    ports:
+    - port: 27017
+      protocol: TCP
+      targetPort: 27017
+    selector:
+      app: mongo
+    sessionAffinity: None
+    type: ClusterIP
+  status:
+    loadBalancer: {}
+- apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      argocd.argoproj.io/tracking-id: mx7ueb-alkfej:/Service:mx7ueb/user-service
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","kind":"Service","metadata":{"annotations":{"argocd.argoproj.io/tracking-id":"mx7ueb-alkfej:/Service:mx7ueb/user-service"},"name":"user-service","namespace":"mx7ueb"},"spec":{"ports":[{"port":8080,"targetPort":8080}],"selector":{"app":"user-service"}}}
+    creationTimestamp: "2026-03-04T08:09:55Z"
+    name: user-service
+    namespace: mx7ueb
+    resourceVersion: "11085"
+    uid: cb53a44a-0d86-481a-9be0-36d402e81d4c
+  spec:
+    clusterIP: 10.111.208.114
+    clusterIPs:
+    - 10.111.208.114
+    internalTrafficPolicy: Cluster
+    ipFamilies:
+    - IPv4
+    ipFamilyPolicy: SingleStack
+    ports:
+    - port: 8080
+      protocol: TCP
+      targetPort: 8080
+    selector:
+      app: user-service
+    sessionAffinity: None
+    type: ClusterIP
+  status:
+    loadBalancer: {}
+- apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    annotations:
+      argocd.argoproj.io/tracking-id: mx7ueb-alkfej:apps/Deployment:mx7ueb/book-service
+      deployment.kubernetes.io/revision: "2"
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{"argocd.argoproj.io/tracking-id":"mx7ueb-alkfej:apps/Deployment:mx7ueb/book-service"},"name":"book-service","namespace":"mx7ueb"},"spec":{"replicas":1,"selector":{"matchLabels":{"app":"book-service"}},"template":{"metadata":{"labels":{"app":"book-service"}},"spec":{"containers":[{"image":"ghcr.io/pityukasdhun/mx7ueb_alkfej/book-service:latest","imagePullPolicy":"Always","name":"book-service","ports":[{"containerPort":8080}]}]}}}}
+    creationTimestamp: "2026-03-04T08:09:55Z"
+    generation: 4
+    name: book-service
+    namespace: mx7ueb
+    resourceVersion: "11099"
+    uid: ec4b3f15-75e4-4050-8d53-8e198f612b3e
+  spec:
+    progressDeadlineSeconds: 600
+    replicas: 1
+    revisionHistoryLimit: 10
+    selector:
+      matchLabels:
+        app: book-service
+    strategy:
+      rollingUpdate:
+        maxSurge: 25%
+        maxUnavailable: 25%
+      type: RollingUpdate
+    template:
+      metadata:
+        labels:
+          app: book-service
+      spec:
+        containers:
+        - image: ghcr.io/pityukasdhun/mx7ueb_alkfej/book-service:latest
+          imagePullPolicy: Always
+          name: book-service
+          ports:
+          - containerPort: 8080
+            protocol: TCP
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    availableReplicas: 1
+    conditions:
+    - lastTransitionTime: "2026-03-04T08:09:57Z"
+      lastUpdateTime: "2026-03-04T08:09:57Z"
+      message: Deployment has minimum availability.
+      reason: MinimumReplicasAvailable
+      status: "True"
+      type: Available
+    - lastTransitionTime: "2026-03-04T08:09:55Z"
+      lastUpdateTime: "2026-03-04T11:51:44Z"
+      message: ReplicaSet "book-service-5f6798fc4d" has successfully progressed.
+      reason: NewReplicaSetAvailable
+      status: "True"
+      type: Progressing
+    observedGeneration: 4
+    readyReplicas: 1
+    replicas: 1
+    terminatingReplicas: 0
+    updatedReplicas: 1
+- apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    annotations:
+      argocd.argoproj.io/tracking-id: mx7ueb-alkfej:apps/Deployment:mx7ueb/frontend
+      deployment.kubernetes.io/revision: "1"
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{"argocd.argoproj.io/tracking-id":"mx7ueb-alkfej:apps/Deployment:mx7ueb/frontend"},"name":"frontend","namespace":"mx7ueb"},"spec":{"replicas":1,"selector":{"matchLabels":{"app":"frontend"}},"template":{"metadata":{"labels":{"app":"frontend"}},"spec":{"containers":[{"image":"frontend:latest","imagePullPolicy":"Never","name":"frontend","ports":[{"containerPort":80}]}]}}}}
+    creationTimestamp: "2026-03-04T08:09:56Z"
+    generation: 4
+    name: frontend
+    namespace: mx7ueb
+    resourceVersion: "11097"
+    uid: cc7985d9-0791-494a-ae9c-a72ed992c0f5
+  spec:
+    progressDeadlineSeconds: 600
+    replicas: 1
+    revisionHistoryLimit: 10
+    selector:
+      matchLabels:
+        app: frontend
+    strategy:
+      rollingUpdate:
+        maxSurge: 25%
+        maxUnavailable: 25%
+      type: RollingUpdate
+    template:
+      metadata:
+        labels:
+          app: frontend
+      spec:
+        containers:
+        - image: frontend:latest
+          imagePullPolicy: Never
+          name: frontend
+          ports:
+          - containerPort: 80
+            protocol: TCP
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    availableReplicas: 1
+    conditions:
+    - lastTransitionTime: "2026-03-04T08:09:57Z"
+      lastUpdateTime: "2026-03-04T08:09:57Z"
+      message: Deployment has minimum availability.
+      reason: MinimumReplicasAvailable
+      status: "True"
+      type: Available
+    - lastTransitionTime: "2026-03-04T08:09:56Z"
+      lastUpdateTime: "2026-03-04T08:09:57Z"
+      message: ReplicaSet "frontend-c54fcdf66" has successfully progressed.
+      reason: NewReplicaSetAvailable
+      status: "True"
+      type: Progressing
+    observedGeneration: 4
+    readyReplicas: 1
+    replicas: 1
+    terminatingReplicas: 0
+    updatedReplicas: 1
+- apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    annotations:
+      argocd.argoproj.io/tracking-id: mx7ueb-alkfej:apps/Deployment:mx7ueb/mcp-server
+      deployment.kubernetes.io/revision: "2"
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{"argocd.argoproj.io/tracking-id":"mx7ueb-alkfej:apps/Deployment:mx7ueb/mcp-server"},"name":"mcp-server","namespace":"mx7ueb"},"spec":{"replicas":1,"selector":{"matchLabels":{"app":"mcp-server"}},"template":{"metadata":{"labels":{"app":"mcp-server"}},"spec":{"containers":[{"image":"ghcr.io/pityukasdhun/mx7ueb_alkfej/mcp-server:latest","imagePullPolicy":"Always","name":"mcp-server","ports":[{"containerPort":8080}]}]}}}}
+    creationTimestamp: "2026-03-04T08:09:55Z"
+    generation: 4
+    name: mcp-server
+    namespace: mx7ueb
+    resourceVersion: "11096"
+    uid: d9cb192c-4112-456d-bb80-e68bdc2e33b1
+  spec:
+    progressDeadlineSeconds: 600
+    replicas: 1
+    revisionHistoryLimit: 10
+    selector:
+      matchLabels:
+        app: mcp-server
+    strategy:
+      rollingUpdate:
+        maxSurge: 25%
+        maxUnavailable: 25%
+      type: RollingUpdate
+    template:
+      metadata:
+        labels:
+          app: mcp-server
+      spec:
+        containers:
+        - image: ghcr.io/pityukasdhun/mx7ueb_alkfej/mcp-server:latest
+          imagePullPolicy: Always
+          name: mcp-server
+          ports:
+          - containerPort: 8080
+            protocol: TCP
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    availableReplicas: 1
+    conditions:
+    - lastTransitionTime: "2026-03-04T08:09:57Z"
+      lastUpdateTime: "2026-03-04T08:09:57Z"
+      message: Deployment has minimum availability.
+      reason: MinimumReplicasAvailable
+      status: "True"
+      type: Available
+    - lastTransitionTime: "2026-03-04T08:09:56Z"
+      lastUpdateTime: "2026-03-04T11:51:37Z"
+      message: ReplicaSet "mcp-server-5fdd899c99" has successfully progressed.
+      reason: NewReplicaSetAvailable
+      status: "True"
+      type: Progressing
+    observedGeneration: 4
+    readyReplicas: 1
+    replicas: 1
+    terminatingReplicas: 0
+    updatedReplicas: 1
+- apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    annotations:
+      argocd.argoproj.io/tracking-id: mx7ueb-alkfej:apps/Deployment:mx7ueb/mongo
+      deployment.kubernetes.io/revision: "1"
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{"argocd.argoproj.io/tracking-id":"mx7ueb-alkfej:apps/Deployment:mx7ueb/mongo"},"name":"mongo","namespace":"mx7ueb"},"spec":{"replicas":1,"selector":{"matchLabels":{"app":"mongo"}},"template":{"metadata":{"labels":{"app":"mongo"}},"spec":{"containers":[{"image":"mongo:7","name":"mongo","ports":[{"containerPort":27017}]}]}}}}
+    creationTimestamp: "2026-03-04T08:09:55Z"
+    generation: 4
+    name: mongo
+    namespace: mx7ueb
+    resourceVersion: "11098"
+    uid: c63b625c-da2f-4bda-91a8-56219bc21950
+  spec:
+    progressDeadlineSeconds: 600
+    replicas: 1
+    revisionHistoryLimit: 10
+    selector:
+      matchLabels:
+        app: mongo
+    strategy:
+      rollingUpdate:
+        maxSurge: 25%
+        maxUnavailable: 25%
+      type: RollingUpdate
+    template:
+      metadata:
+        labels:
+          app: mongo
+      spec:
+        containers:
+        - image: mongo:7
+          imagePullPolicy: IfNotPresent
+          name: mongo
+          ports:
+          - containerPort: 27017
+            protocol: TCP
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    availableReplicas: 1
+    conditions:
+    - lastTransitionTime: "2026-03-04T08:10:14Z"
+      lastUpdateTime: "2026-03-04T08:10:14Z"
+      message: Deployment has minimum availability.
+      reason: MinimumReplicasAvailable
+      status: "True"
+      type: Available
+    - lastTransitionTime: "2026-03-04T08:09:55Z"
+      lastUpdateTime: "2026-03-04T08:10:14Z"
+      message: ReplicaSet "mongo-5cbf997c58" has successfully progressed.
+      reason: NewReplicaSetAvailable
+      status: "True"
+      type: Progressing
+    observedGeneration: 4
+    readyReplicas: 1
+    replicas: 1
+    terminatingReplicas: 0
+    updatedReplicas: 1
+- apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    annotations:
+      argocd.argoproj.io/tracking-id: mx7ueb-alkfej:apps/Deployment:mx7ueb/user-service
+      deployment.kubernetes.io/revision: "2"
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{"argocd.argoproj.io/tracking-id":"mx7ueb-alkfej:apps/Deployment:mx7ueb/user-service"},"name":"user-service","namespace":"mx7ueb"},"spec":{"replicas":1,"selector":{"matchLabels":{"app":"user-service"}},"template":{"metadata":{"labels":{"app":"user-service"}},"spec":{"containers":[{"image":"ghcr.io/pityukasdhun/mx7ueb_alkfej/user-service:latest","imagePullPolicy":"Always","name":"user-service","ports":[{"containerPort":8080}]}]}}}}
+    creationTimestamp: "2026-03-04T08:09:55Z"
+    generation: 4
+    name: user-service
+    namespace: mx7ueb
+    resourceVersion: "11102"
+    uid: 6b62a8b6-e8ad-46ce-99db-9d650cb70664
+  spec:
+    progressDeadlineSeconds: 600
+    replicas: 1
+    revisionHistoryLimit: 10
+    selector:
+      matchLabels:
+        app: user-service
+    strategy:
+      rollingUpdate:
+        maxSurge: 25%
+        maxUnavailable: 25%
+      type: RollingUpdate
+    template:
+      metadata:
+        labels:
+          app: user-service
+      spec:
+        containers:
+        - image: ghcr.io/pityukasdhun/mx7ueb_alkfej/user-service:latest
+          imagePullPolicy: Always
+          name: user-service
+          ports:
+          - containerPort: 8080
+            protocol: TCP
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    availableReplicas: 1
+    conditions:
+    - lastTransitionTime: "2026-03-04T08:09:57Z"
+      lastUpdateTime: "2026-03-04T08:09:57Z"
+      message: Deployment has minimum availability.
+      reason: MinimumReplicasAvailable
+      status: "True"
+      type: Available
+    - lastTransitionTime: "2026-03-04T08:09:55Z"
+      lastUpdateTime: "2026-03-04T11:51:42Z"
+      message: ReplicaSet "user-service-64b4d7f7bb" has successfully progressed.
+      reason: NewReplicaSetAvailable
+      status: "True"
+      type: Progressing
+    observedGeneration: 4
+    readyReplicas: 1
+    replicas: 1
+    terminatingReplicas: 0
+    updatedReplicas: 1
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      argocd.argoproj.io/tracking-id: mx7ueb-alkfej:apps/Deployment:mx7ueb/book-service
+      deployment.kubernetes.io/desired-replicas: "1"
+      deployment.kubernetes.io/max-replicas: "2"
+      deployment.kubernetes.io/revision: "2"
+    creationTimestamp: "2026-03-04T11:51:24Z"
+    generation: 1
+    labels:
+      app: book-service
+      pod-template-hash: 5f6798fc4d
+    name: book-service-5f6798fc4d
+    namespace: mx7ueb
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: book-service
+      uid: ec4b3f15-75e4-4050-8d53-8e198f612b3e
+    resourceVersion: "11092"
+    uid: 73b6afc1-3ae8-419f-b77b-78d22c40906f
+  spec:
+    replicas: 1
+    selector:
+      matchLabels:
+        app: book-service
+        pod-template-hash: 5f6798fc4d
+    template:
+      metadata:
+        labels:
+          app: book-service
+          pod-template-hash: 5f6798fc4d
+      spec:
+        containers:
+        - image: ghcr.io/pityukasdhun/mx7ueb_alkfej/book-service:latest
+          imagePullPolicy: Always
+          name: book-service
+          ports:
+          - containerPort: 8080
+            protocol: TCP
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    availableReplicas: 1
+    fullyLabeledReplicas: 1
+    observedGeneration: 1
+    readyReplicas: 1
+    replicas: 1
+    terminatingReplicas: 0
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      argocd.argoproj.io/tracking-id: mx7ueb-alkfej:apps/Deployment:mx7ueb/book-service
+      deployment.kubernetes.io/desired-replicas: "1"
+      deployment.kubernetes.io/max-replicas: "2"
+      deployment.kubernetes.io/revision: "1"
+    creationTimestamp: "2026-03-04T08:09:55Z"
+    generation: 2
+    labels:
+      app: book-service
+      pod-template-hash: 6f78d54cb7
+    name: book-service-6f78d54cb7
+    namespace: mx7ueb
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: book-service
+      uid: ec4b3f15-75e4-4050-8d53-8e198f612b3e
+    resourceVersion: "11029"
+    uid: 43396937-a3da-4d10-babe-71afd2250e82
+  spec:
+    replicas: 0
+    selector:
+      matchLabels:
+        app: book-service
+        pod-template-hash: 6f78d54cb7
+    template:
+      metadata:
+        labels:
+          app: book-service
+          pod-template-hash: 6f78d54cb7
+      spec:
+        containers:
+        - image: book-service:latest
+          imagePullPolicy: Never
+          name: book-service
+          ports:
+          - containerPort: 8080
+            protocol: TCP
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    observedGeneration: 2
+    replicas: 0
+    terminatingReplicas: 0
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      argocd.argoproj.io/tracking-id: mx7ueb-alkfej:apps/Deployment:mx7ueb/frontend
+      deployment.kubernetes.io/desired-replicas: "1"
+      deployment.kubernetes.io/max-replicas: "2"
+      deployment.kubernetes.io/revision: "1"
+    creationTimestamp: "2026-03-04T08:09:56Z"
+    generation: 1
+    labels:
+      app: frontend
+      pod-template-hash: c54fcdf66
+    name: frontend-c54fcdf66
+    namespace: mx7ueb
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: frontend
+      uid: cc7985d9-0791-494a-ae9c-a72ed992c0f5
+    resourceVersion: "4916"
+    uid: ef2fd1a5-fa5b-4cf1-ae89-dfa8038196ee
+  spec:
+    replicas: 1
+    selector:
+      matchLabels:
+        app: frontend
+        pod-template-hash: c54fcdf66
+    template:
+      metadata:
+        labels:
+          app: frontend
+          pod-template-hash: c54fcdf66
+      spec:
+        containers:
+        - image: frontend:latest
+          imagePullPolicy: Never
+          name: frontend
+          ports:
+          - containerPort: 80
+            protocol: TCP
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    availableReplicas: 1
+    fullyLabeledReplicas: 1
+    observedGeneration: 1
+    readyReplicas: 1
+    replicas: 1
+    terminatingReplicas: 0
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      argocd.argoproj.io/tracking-id: mx7ueb-alkfej:apps/Deployment:mx7ueb/mcp-server
+      deployment.kubernetes.io/desired-replicas: "1"
+      deployment.kubernetes.io/max-replicas: "2"
+      deployment.kubernetes.io/revision: "2"
+    creationTimestamp: "2026-03-04T11:51:24Z"
+    generation: 1
+    labels:
+      app: mcp-server
+      pod-template-hash: 5fdd899c99
+    name: mcp-server-5fdd899c99
+    namespace: mx7ueb
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: mcp-server
+      uid: d9cb192c-4112-456d-bb80-e68bdc2e33b1
+    resourceVersion: "11090"
+    uid: ba8c8d90-f29b-483f-8e4d-60467568d951
+  spec:
+    replicas: 1
+    selector:
+      matchLabels:
+        app: mcp-server
+        pod-template-hash: 5fdd899c99
+    template:
+      metadata:
+        labels:
+          app: mcp-server
+          pod-template-hash: 5fdd899c99
+      spec:
+        containers:
+        - image: ghcr.io/pityukasdhun/mx7ueb_alkfej/mcp-server:latest
+          imagePullPolicy: Always
+          name: mcp-server
+          ports:
+          - containerPort: 8080
+            protocol: TCP
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    availableReplicas: 1
+    fullyLabeledReplicas: 1
+    observedGeneration: 1
+    readyReplicas: 1
+    replicas: 1
+    terminatingReplicas: 0
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      argocd.argoproj.io/tracking-id: mx7ueb-alkfej:apps/Deployment:mx7ueb/mcp-server
+      deployment.kubernetes.io/desired-replicas: "1"
+      deployment.kubernetes.io/max-replicas: "2"
+      deployment.kubernetes.io/revision: "1"
+    creationTimestamp: "2026-03-04T08:09:56Z"
+    generation: 2
+    labels:
+      app: mcp-server
+      pod-template-hash: 67fbf8f894
+    name: mcp-server-67fbf8f894
+    namespace: mx7ueb
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: mcp-server
+      uid: d9cb192c-4112-456d-bb80-e68bdc2e33b1
+    resourceVersion: "10975"
+    uid: d19dd573-9564-4068-a806-9b261aa7e9f9
+  spec:
+    replicas: 0
+    selector:
+      matchLabels:
+        app: mcp-server
+        pod-template-hash: 67fbf8f894
+    template:
+      metadata:
+        labels:
+          app: mcp-server
+          pod-template-hash: 67fbf8f894
+      spec:
+        containers:
+        - image: mcp-server:latest
+          imagePullPolicy: Never
+          name: mcp-server
+          ports:
+          - containerPort: 8080
+            protocol: TCP
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    observedGeneration: 2
+    replicas: 0
+    terminatingReplicas: 0
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      argocd.argoproj.io/tracking-id: mx7ueb-alkfej:apps/Deployment:mx7ueb/mongo
+      deployment.kubernetes.io/desired-replicas: "1"
+      deployment.kubernetes.io/max-replicas: "2"
+      deployment.kubernetes.io/revision: "1"
+    creationTimestamp: "2026-03-04T08:09:55Z"
+    generation: 1
+    labels:
+      app: mongo
+      pod-template-hash: 5cbf997c58
+    name: mongo-5cbf997c58
+    namespace: mx7ueb
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: mongo
+      uid: c63b625c-da2f-4bda-91a8-56219bc21950
+    resourceVersion: "4917"
+    uid: 6557b880-bb14-4948-a4ec-0a1ad13975b6
+  spec:
+    replicas: 1
+    selector:
+      matchLabels:
+        app: mongo
+        pod-template-hash: 5cbf997c58
+    template:
+      metadata:
+        labels:
+          app: mongo
+          pod-template-hash: 5cbf997c58
+      spec:
+        containers:
+        - image: mongo:7
+          imagePullPolicy: IfNotPresent
+          name: mongo
+          ports:
+          - containerPort: 27017
+            protocol: TCP
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    availableReplicas: 1
+    fullyLabeledReplicas: 1
+    observedGeneration: 1
+    readyReplicas: 1
+    replicas: 1
+    terminatingReplicas: 0
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      argocd.argoproj.io/tracking-id: mx7ueb-alkfej:apps/Deployment:mx7ueb/user-service
+      deployment.kubernetes.io/desired-replicas: "1"
+      deployment.kubernetes.io/max-replicas: "2"
+      deployment.kubernetes.io/revision: "2"
+    creationTimestamp: "2026-03-04T11:51:24Z"
+    generation: 1
+    labels:
+      app: user-service
+      pod-template-hash: 64b4d7f7bb
+    name: user-service-64b4d7f7bb
+    namespace: mx7ueb
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: user-service
+      uid: 6b62a8b6-e8ad-46ce-99db-9d650cb70664
+    resourceVersion: "11100"
+    uid: cc781f4f-9e2e-4c24-a71b-e46164124fd6
+  spec:
+    replicas: 1
+    selector:
+      matchLabels:
+        app: user-service
+        pod-template-hash: 64b4d7f7bb
+    template:
+      metadata:
+        labels:
+          app: user-service
+          pod-template-hash: 64b4d7f7bb
+      spec:
+        containers:
+        - image: ghcr.io/pityukasdhun/mx7ueb_alkfej/user-service:latest
+          imagePullPolicy: Always
+          name: user-service
+          ports:
+          - containerPort: 8080
+            protocol: TCP
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    availableReplicas: 1
+    fullyLabeledReplicas: 1
+    observedGeneration: 1
+    readyReplicas: 1
+    replicas: 1
+    terminatingReplicas: 0
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      argocd.argoproj.io/tracking-id: mx7ueb-alkfej:apps/Deployment:mx7ueb/user-service
+      deployment.kubernetes.io/desired-replicas: "1"
+      deployment.kubernetes.io/max-replicas: "2"
+      deployment.kubernetes.io/revision: "1"
+    creationTimestamp: "2026-03-04T08:09:55Z"
+    generation: 2
+    labels:
+      app: user-service
+      pod-template-hash: 75864d9d65
+    name: user-service-75864d9d65
+    namespace: mx7ueb
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: user-service
+      uid: 6b62a8b6-e8ad-46ce-99db-9d650cb70664
+    resourceVersion: "11003"
+    uid: 353199df-aadc-483c-9796-cdb68a3be0fc
+  spec:
+    replicas: 0
+    selector:
+      matchLabels:
+        app: user-service
+        pod-template-hash: 75864d9d65
+    template:
+      metadata:
+        labels:
+          app: user-service
+          pod-template-hash: 75864d9d65
+      spec:
+        containers:
+        - image: user-service:latest
+          imagePullPolicy: Never
+          name: user-service
+          ports:
+          - containerPort: 8080
+            protocol: TCP
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    observedGeneration: 2
+    replicas: 0
+    terminatingReplicas: 0
+kind: List
+metadata:
+  resourceVersion: ""
