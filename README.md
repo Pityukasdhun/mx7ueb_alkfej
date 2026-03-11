@@ -106,5 +106,9 @@ ZIP projekt full-backup
 Git bundle backup
 Kubernetes cluster export
 
+ArgoCD admin:
+felhasználónév: admin
+jelszó ULJSd3JaYGPs1TuM
+
 Licenc
 Educational project – academic use
